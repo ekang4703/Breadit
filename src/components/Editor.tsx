@@ -88,7 +88,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         onReady() {
           ref.current = editor
         },
-        placeholder: 'Chode',
+        placeholder: 'Type your question here...',
         inlineToolbar: true,
         data: { blocks: [] },
         tools: {

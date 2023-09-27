@@ -17,8 +17,6 @@ import { Textarea } from '../ui/Textarea'
 import { toast } from '../../hooks/use-toast'
 import { useSession } from 'next-auth/react'
 
-import { createComment } from '@/components/ui/CreateComment'
-
 type ExtendedComment = Comment & {
   votes: CommentVote[]
   author: User

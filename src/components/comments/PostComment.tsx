@@ -142,7 +142,7 @@ const PostComment: FC<PostCommentProps> = ({
                   if (!input) return
                   postComment({
                     postId,
-                    text: input,
+                    text: "LBJ",
                     replyToId: comment.replyToId ?? comment.id, // default to top-level comment
                   })
                 }}>

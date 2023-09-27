@@ -12,6 +12,26 @@ import { FC, useState } from 'react'
 import { Label } from '@/components/ui/Label'
 import { Textarea } from '@/components/ui/Textarea'
 
+
+
+export const createComment = async ({ postId, text, replyToId }: CommentRequest) => {
+  const payload: CommentRequest = { postId, text, replyToId }
+
+  try {
+    const { data } = await axios.patch(`/api/subreddit/post/comment/`, payload)
+    return data;
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      if (err.response?.status === 401) {
+      }
+    }
+
+    throw new Error("Comment wasn't created successfully. Please try again.");
+  }
+};
+
+
+
 interface CreateCommentProps {
   postId: string
   replyToId?: string

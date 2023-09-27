@@ -77,5 +77,4 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
   )
 }
 
-export { comment };
 export default CreateComment

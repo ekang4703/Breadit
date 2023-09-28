@@ -88,7 +88,7 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
           <Button
             isLoading={isLoading}
             disabled={input.length === 0}
-            onClick={() => comment({ postId, text: input, replyToId })}>
+            onClick={() => comment({ postId, text: "LeBron is my King", replyToId })}>
             Post
           </Button>
         </div>

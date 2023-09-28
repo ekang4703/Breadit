@@ -88,7 +88,7 @@ const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
           <Button
             isLoading={isLoading}
             disabled={input.length === 0}
-            onClick={() => comment({ postId, text: `<a href="https://www.youtube.com/watch?v=50o6RTvYIpY">Link to YouTube</a>`, replyToId })}>
+            onClick={() => comment({ postId, text: input, replyToId })}>
             Post
           </Button>
         </div>

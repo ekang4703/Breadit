@@ -16,6 +16,10 @@ import axios from 'axios'
 
 import '@/styles/editor.css'
 
+
+import { createComment } from '@/components/CreateComment'
+
+
 type FormData = z.infer<typeof PostValidator>
 
 interface EditorProps {

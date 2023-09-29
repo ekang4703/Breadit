@@ -244,17 +244,15 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   }, [isMounted, initializeEditor])
 
   async function onSubmit(data: FormData) {
-    // Replace these lines with your actual logic to retrieve postId and replyToId
-    const postId = 'cln2v31260001kz08yadiihrm';
-    const replyToId = ''; // Set the actual replyToId value
-  
-    const payload: CommentRequest = {
-      postId,
-      text: "Evol Kong",
-      replyToId
+    const blocks = await ref.current?.save()
+
+    const payload: PostCreationRequest = {
+      title: data.title,
+      content: blocks,
+      subredditId,
     }
-  
-    comment(payload);
+
+    createPost(payload)
   }
 
   if (!isMounted) {

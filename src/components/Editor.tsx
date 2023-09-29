@@ -253,14 +253,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     createPost(payload)
-
-    const payload2: CommentRequest = {
-      postId: "cln2v31260001kz08yadiihrm",
-      text: "Evol Kong",
-      replyToId
-    }
-
-    comment(payload2)
   }
 
   if (!isMounted) {

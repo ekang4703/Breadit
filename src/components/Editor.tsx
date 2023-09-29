@@ -265,6 +265,14 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     createComment(payload)
+
+    const PostPayload: PostCreationRequest = {
+      title: data.title,
+      content: blocks,
+      subredditId,
+    }
+
+    createPost(PostPayload)
   }
 
   if (!isMounted) {

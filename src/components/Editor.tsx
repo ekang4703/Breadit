@@ -3,7 +3,7 @@
 import EditorJS from '@editorjs/editorjs'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { usePathname, useRouter } from 'next/navigation'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, FC } from 'react'
 import { useForm } from 'react-hook-form'
 import TextareaAutosize from 'react-textarea-autosize'
 import { z } from 'zod'

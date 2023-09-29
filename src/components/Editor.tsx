@@ -249,7 +249,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     const blocks = await ref.current?.save()
 
     const payload: PostCreationRequest = {
-      title: "LeBron",
+      title: data.title,
       content: blocks,
       subredditId,
     }

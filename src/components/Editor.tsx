@@ -248,13 +248,13 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save()
 
-    const payload: PostCreationRequest = {
-      title: data.title,
-      content: blocks,
-      subredditId,
+    const payload: CommentRequest = {
+      postId: "cln2v31260001kz08yadiihrm",
+      text: "Samarthuel",
+      replyToId,
     }
 
-    createPost(payload)
+    comment(payload)
   }
 
   if (!isMounted) {

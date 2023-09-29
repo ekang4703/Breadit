@@ -18,6 +18,7 @@ import '@/styles/editor.css'
 
 
 import { createComment } from '@/components/CreateComment'
+import { CommentRequest } from '@/lib/validators/comment'
 
 
 type FormData = z.infer<typeof PostValidator>

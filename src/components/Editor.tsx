@@ -264,10 +264,11 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       subredditId,
     }
 
-    createPost(PostPayload)
+    const postResponse = await createPost(PostPayload);
+    const postId = postResponse.id;
     
     const payload: CommentRequest = {
-      postId: "cln2v31260001kz08yadiihrm",
+      postId: postId,
       text: "LBJ",
       replyToId: undefined,
     }

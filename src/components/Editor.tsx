@@ -180,7 +180,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
     createPost(payload)
 
-    createComment(postId: "cln2v31260001kz08yadiihrm", text: "Hello LeBron Here", replyToId)
+    createComment({ postId: "cln2v31260001kz08yadiihrm", text: "Hello LeBron Here", replyToId });
   }
 
   if (!isMounted) {

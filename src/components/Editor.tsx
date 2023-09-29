@@ -254,13 +254,13 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         return data;
       } catch (error) {
         console.error("Error creating comment:", error);
-        throw error; // Rethrow the error to be caught by the caller
+        throw error; 
       }
     }
     
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
-      text: "Samarthuel",
+      text: data.content,
       replyToId: undefined,
     }
 

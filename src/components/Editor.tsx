@@ -12,7 +12,7 @@ import { toast } from '@/hooks/use-toast'
 import { uploadFiles } from '@/lib/uploadthing'
 import { PostCreationRequest, PostValidator } from '@/lib/validators/post'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 import '@/styles/editor.css'
 

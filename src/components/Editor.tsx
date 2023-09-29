@@ -248,13 +248,23 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save()
 
+    async function createComment(commentPayload: CommentRequest) {
+      try {
+        const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);
+        return data;
+      } catch (error) {
+        console.error("Error creating comment:", error);
+        throw error; // Rethrow the error to be caught by the caller
+      }
+    }
+    
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
       text: "Samarthuel",
       replyToId,
     }
 
-    comment(payload)
+    createComment(payload)
   }
 
   if (!isMounted) {

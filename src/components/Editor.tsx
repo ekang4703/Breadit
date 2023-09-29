@@ -31,36 +31,7 @@ interface CreateCommentProps {
   replyToId?: string
 }
 
-const CreateComment: FC<CreateCommentProps> = ({ postId, replyToId }) => {
-  const [input, setInput] = useState<string>('')
-  const router = useRouter()
-  const { loginToast } = useCustomToasts()
 
-  const { mutate: comment, isLoading } = useMutation({
-    mutationFn: async ({ postId, text, replyToId }: CommentRequest) => {
-      const payload2: CommentRequest = { postId, text, replyToId }
-
-      const { data } = await axios.patch(
-        `/api/subreddit/post/comment/`,
-        payload2
-      )
-      return data
-    },
-
-    onError: (err) => {
-      if (err instanceof AxiosError) {
-        if (err.response?.status === 401) {
-          return loginToast()
-        }
-      }
-
-      return toast({
-        title: 'Something went wrong.',
-        description: "Comment wasn't created successfully. Please try again.",
-        variant: 'destructive',
-      })
-    },
-  })
 
 
 

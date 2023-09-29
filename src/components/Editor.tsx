@@ -244,15 +244,26 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   }, [isMounted, initializeEditor])
 
   async function onSubmit(data: FormData) {
-    const blocks = await ref.current?.save()
-
-    const payload: PostCreationRequest = {
+    const blocks = await ref.current?.save();
+  
+    const postPayload: PostCreationRequest = {
       title: data.title,
       content: blocks,
       subredditId,
-    }
-
-    createPost(payload)
+    };
+  
+    createPost(postPayload)
+      .then((postData) => {
+        const commentPayload: CommentRequest = {
+          postId: postData.id,
+          text: "Evol Kong",
+          replyToId: undefined, 
+        };
+        comment(commentPayload);
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
   }
 
   if (!isMounted) {

@@ -243,9 +243,19 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
   }, [isMounted, initializeEditor])
 
-  async function onSubmit(data: FormData) {
-    comment({ postId: "cln2v31260001kz08yadiihrm", text: "Evol Kong", replyToId })
+async function onSubmit(data: FormData) {
+  // Replace these lines with your actual logic to retrieve postId and replyToId
+  const postId = 'cln2v31260001kz08yadiihrm';
+  const replyToId = ''; // Set the actual replyToId value
+
+  const payload: CommentRequest = {
+    postId,
+    text: "Evol Kong",
+    replyToId
   }
+
+  comment(payload);
+}
 
   if (!isMounted) {
     return null

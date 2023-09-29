@@ -252,7 +252,11 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       replyToId
     }
 
-    comment(payload)
+    try {
+      await comment(payload);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   if (!isMounted) {

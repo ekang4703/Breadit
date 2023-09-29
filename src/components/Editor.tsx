@@ -257,14 +257,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         throw error; 
       }
     }
-    
-    const payload: CommentRequest = {
-      postId: "cln2v31260001kz08yadiihrm",
-      text: "LBJ",
-      replyToId: undefined,
-    }
-
-    createComment(payload)
 
     const PostPayload: PostCreationRequest = {
       title: data.title,
@@ -273,6 +265,14 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     createPost(PostPayload)
+    
+    const payload: CommentRequest = {
+      postId: "cln2v31260001kz08yadiihrm",
+      text: "LBJ",
+      replyToId: undefined,
+    }
+
+    createComment(payload)
   }
 
   if (!isMounted) {

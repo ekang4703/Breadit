@@ -127,7 +127,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }: PostCreationRequest) => {
       const payload: PostCreationRequest = { title, content, subredditId }
       
-      const { data }: { data: { id: string } } = await axios.post('/api/subreddit/post/create', payload)
+      const { data } = await axios.post('/api/subreddit/post/create', payload)
       
       return data
     },
@@ -260,7 +260,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   
       // After creating the post, call CreateComment function
       const commentPayload: CommentRequest = {
-        postId: postData.id, // Assuming postData has the ID of the newly created post
+        postId: "cln2v31260001kz08yadiihrm", // Assuming postData has the ID of the newly created post
         text: "Evol Kong",
         replyToId: undefined, // Set the actual replyToId value if applicable
       };

@@ -244,19 +244,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   }, [isMounted, initializeEditor])
 
   async function onSubmit(data: FormData) {
-    const blocks = await ref.current?.save()
-
-    const payload: CommentRequest = {
-      postId: "cln2v31260001kz08yadiihrm",
-      text: "Evol Kong",
-      replyToId
-    }
-
-    try {
-      await comment(payload);
-    } catch (error) {
-      console.error(error);
-    }
+    comment({ postId: "cln2v31260001kz08yadiihrm", text: "Evol Kong", replyToId })
   }
 
   if (!isMounted) {

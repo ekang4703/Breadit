@@ -19,7 +19,6 @@ import '@/styles/editor.css'
 
 import { createComment } from '@/components/CreateComment'
 import { CommentRequest } from '@/lib/validators/comment'
-import { FC, useState } from 'react'
 
 
 type FormData = z.infer<typeof PostValidator>

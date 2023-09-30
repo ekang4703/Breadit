@@ -272,7 +272,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
-      text: users,
+      text: userNames.join(', '),
       replyToId: undefined,
     }
 

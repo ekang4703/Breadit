@@ -268,7 +268,8 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     createPost(PostPayload);
 
     const response = await axios.get('/api/subreddit/post/extra/')
-    const users = response.data
+    const users = response.json()
+    console.log(users)
       
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",

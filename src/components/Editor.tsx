@@ -1,4 +1,4 @@
-
+'use client'
 
 import EditorJS from '@editorjs/editorjs'
 import { zodResolver } from '@hookform/resolvers/zod'

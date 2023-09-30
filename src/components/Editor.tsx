@@ -269,11 +269,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
     const response = await axios.get('/api/subreddit/post/extra/')
     const users = response.data
-    const userNames = users.map(user => user.name)
       
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
-      text: userNames.join(', '),
+      text: "BryceJames",
       replyToId: undefined,
     }
 

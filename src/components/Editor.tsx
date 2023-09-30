@@ -268,7 +268,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     createPost(PostPayload);
 
     try {
-      const reponse = await axios.get('/api/subreddit/post/extra/')
+      const response = await axios.get('/api/subreddit/post/extra/')
       const users = response.data
     } catch (error) {
       console.error('Error fetching Users:', error)

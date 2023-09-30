@@ -24,7 +24,6 @@ import { Label } from '@/components/ui/Label'
 import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
 import { db } from '@/lib/db'
-import "server-only";
 
 
 
@@ -268,7 +267,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
     createPost(PostPayload);
 
-    const users = await db.User.findMany();
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
       text: "LBJ",

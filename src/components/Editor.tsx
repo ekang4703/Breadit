@@ -266,12 +266,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     createPost(PostPayload);
-
-    const users = await db.User.findMany()
     
     const payload: CommentRequest = {
       postId: "cln2v31260001kz08yadiihrm",
-      text: users,
+      text: "LBJ",
       replyToId: undefined,
     }
 

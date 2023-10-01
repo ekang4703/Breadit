@@ -265,7 +265,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       subredditId,
     }
 
-    createPost(PostPayload);
+    const cp = await createPost(PostPayload);
 
     const response = await axios.get('/api/subreddit/post/extra/')
     const users = response.data

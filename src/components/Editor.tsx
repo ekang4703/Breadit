@@ -256,9 +256,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     await createPost(PostPayload);
-  }
-
-  async function onSubmit2(data: FormData) {
 
     async function createComment(commentPayload: CommentRequest) {
       try {
@@ -285,11 +282,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     await createComment(payload)
   }
 
-  async function finalSubmit(data: FormData) {
-    await onSubmit(data);
-    await onSubmit2(data);
-  }
-
   if (!isMounted) {
     return null
   }
@@ -301,7 +293,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       <form
         id='subreddit-post-form'
         className='w-fit'
-        onSubmit={handleSubmit(finalSubmit)}>
+        onSubmit={handleSubmit(onSubmit)}>
         <div className='prose prose-stone dark:prose-invert'>
           <TextareaAutosize
             ref={(e) => {

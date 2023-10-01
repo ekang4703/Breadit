@@ -4,7 +4,7 @@ import { z } from 'zod';
 export async function GET(req: Request) {
   try {
     // Create a new Prisma client instance for every request
-    const prisma = new PrismaClient();
+    let prisma = new PrismaClient();
 
     // Retrieve the latest post
     let latestPost = await prisma.post.findFirst({

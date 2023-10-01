@@ -263,8 +263,13 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       body: JSON.stringify(PostPayload),
     });
 
-    const response1Data = await response1.json();
-    const postId1 = response1Data.postId;
+    if (response1.ok) {
+      const response1Data = await response1.json();
+      const postId1 = response1Data.postId;
+      // Use postId or handle the response data as needed
+    } else {
+      // Handle errors based on response.status or response.statusText
+    }
 
     async function createComment(commentPayload: CommentRequest) {
       try {

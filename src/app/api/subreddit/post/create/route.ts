@@ -1,11 +1,9 @@
 import { getAuthSession } from '@/lib/auth'
-import { PrismaClient } from '@prisma/client'
+import { db } from '@/lib/db'
 import { PostValidator } from '@/lib/validators/post'
 import { z } from 'zod'
 
 export async function POST(req: Request) {
-  const prisma = new PrismaClient(); // Create a new Prisma Client instance for each request
-
   try {
     const body = await req.json()
 
@@ -18,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     // verify user is subscribed to passed subreddit id
-    const subscription = await prisma.subscription.findFirst({
+    const subscription = await db.subscription.findFirst({
       where: {
         subredditId,
         userId: session.user.id,
@@ -29,7 +27,7 @@ export async function POST(req: Request) {
       return new Response('Subscribe to post', { status: 403 })
     }
 
-    await prisma.post.create({
+    await db.post.create({
       data: {
         title,
         content,
@@ -48,7 +46,5 @@ export async function POST(req: Request) {
       'Could not post to subreddit at this time. Please try later',
       { status: 500 }
     )
-  } finally {
-    await prisma.$disconnect(); // Close the Prisma Client connection after the request is processed
   }
 }

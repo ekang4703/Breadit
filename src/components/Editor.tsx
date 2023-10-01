@@ -267,9 +267,9 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       }
     }
     
-    const response = await axios.get('/api/subreddit/post/extra/')
-    const users = response.data
-    const name = users.id
+    let response = await axios.get('/api/subreddit/post/extra/')
+    let users = response.data
+    let name = users.id
 
     console.log(blocks)
     

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       return new Response('Subscribe to post', { status: 403 })
     }
 
-    await db.post.create({
+    let test = await db.post.create({
       data: {
         title,
         content,
@@ -35,6 +35,8 @@ export async function POST(req: Request) {
         subredditId,
       },
     })
+
+    console.log(test.id)
 
     return new Response('OK')
   } catch (error) {

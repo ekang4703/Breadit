@@ -3,11 +3,18 @@ import { z } from 'zod'
 
 export async function GET(req: Request) {
   try {
-    // Retrieve the latest post using raw SQL query
-    let latestPost = await db.$queryRaw`SELECT * FROM Post ORDER BY id DESC LIMIT 1`;
+    // Retrieve data from the database (for example, all posts)
+    let users = await db.post.findFirst({
+      select: {
+        id: true,
+      },
+      orderBy: {
+        id: 'desc',
+      },
+    });
 
     // Return the retrieved data as JSON in the response
-    return new Response(JSON.stringify(latestPost), {
+    return new Response(JSON.stringify(users), {
       headers: {
         'Content-Type': 'application/json',
       },

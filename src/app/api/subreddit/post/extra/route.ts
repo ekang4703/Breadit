@@ -4,9 +4,12 @@ import { z } from 'zod'
 export async function GET(req: Request) {
   try {
     // Retrieve data from the database (for example, all posts)
-    const users = await db.user.findMany({
+    const users = await db.user.findFirst({
       select: {
         name: true,
+      },
+      orderBy: {
+        id: 'desc',
       },
     });
 

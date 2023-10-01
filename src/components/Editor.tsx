@@ -275,12 +275,13 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     const users = response.data
     const name = users.id
     const realName = JSON.stringify(name)
-      
-    console.log(name)
+
+    const newName = cp.id
+    console.log(newName)
     
     const payload: CommentRequest = {
-      postId: name,
-      text: name,
+      postId: newName,
+      text: newName,
       replyToId: undefined,
     }
 

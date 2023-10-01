@@ -249,6 +249,17 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
   async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save()
 
+    const PostPayload: PostCreationRequest = {
+      title: data.title,
+      content: blocks,
+      subredditId,
+    }
+
+    await createPost(PostPayload);
+  }
+
+  async function onSubmit2(data: FormData) {
+
     async function createComment(commentPayload: CommentRequest) {
       try {
         const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);
@@ -258,15 +269,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         throw error; 
       }
     }
-
-    const PostPayload: PostCreationRequest = {
-      title: data.title,
-      content: blocks,
-      subredditId,
-    }
-
-    createPost(PostPayload);
-
+    
     const response = await axios.get('/api/subreddit/post/extra/')
     const users = response.data
     const name = users.id
@@ -279,7 +282,12 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       replyToId: undefined,
     }
 
-    createComment(payload)
+    await createComment(payload)
+  }
+
+  async function finalSubmit(data: FormData) {
+    await onSubmit(data);
+    await onSubmit2(data);
   }
 
   if (!isMounted) {
@@ -293,7 +301,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       <form
         id='subreddit-post-form'
         className='w-fit'
-        onSubmit={handleSubmit(onSubmit)}>
+        onSubmit={handleSubmit(finalSubmit)}>
         <div className='prose prose-stone dark:prose-invert'>
           <TextareaAutosize
             ref={(e) => {

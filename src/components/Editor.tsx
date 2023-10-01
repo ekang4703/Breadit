@@ -271,7 +271,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     const users = response.data
     const name = users.id
 
-    console.log(name)
+    console.log(data.content)
     
     const payload: CommentRequest = {
       postId: name,

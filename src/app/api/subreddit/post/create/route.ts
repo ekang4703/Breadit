@@ -7,8 +7,6 @@ export async function POST(req: Request) {
   try {
     const body = await req.json()
 
-    console.log(body)
-
     const { title, content, subredditId } = PostValidator.parse(body)
 
     const session = await getAuthSession()

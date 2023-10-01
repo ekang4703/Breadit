@@ -4,7 +4,7 @@ import { z } from 'zod'
 export async function GET(req: Request) {
   try {
     // Retrieve data from the database (for example, all posts)
-    const users = await db.post.findFirst({
+    let users = await db.post.findFirst({
       select: {
         id: true,
       },

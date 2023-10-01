@@ -255,7 +255,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       subredditId,
     }
 
-    const response = fetch ('/api/subreddit/post/create', {
+    const response1 = fetch ('/api/subreddit/post/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -263,8 +263,8 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       body: JSON.stringify(PostPayload),
     });
 
-    const responseData = await response.json();
-    const postId = responseData.postId;
+    const response1Data = await response.json();
+    const postId1 = responseData.postId;
 
     async function createComment(commentPayload: CommentRequest) {
       try {
@@ -280,7 +280,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     let users = response.data
     let name = users.id
 
-    console.log(postId)
+    console.log(postId1)
     
     const payload: CommentRequest = {
       postId: name,

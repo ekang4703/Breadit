@@ -1,13 +1,10 @@
-import { PrismaClient } from '@prisma/client';
-import { z } from 'zod';
+import { db } from '@/lib/db'
+import { z } from 'zod'
 
 export async function GET(req: Request) {
   try {
-    // Create a new Prisma client instance for every request
-    let prisma = new PrismaClient();
-
-    // Retrieve the latest post
-    let latestPost = await prisma.post.findFirst({
+    // Retrieve data from the database (for example, all posts)
+    let users = await db.post.findFirst({
       select: {
         id: true,
       },
@@ -16,11 +13,8 @@ export async function GET(req: Request) {
       },
     });
 
-    // Close the Prisma client connection after the query is executed
-    await prisma.$disconnect();
-
     // Return the retrieved data as JSON in the response
-    return new Response(JSON.stringify(latestPost), {
+    return new Response(JSON.stringify(users), {
       headers: {
         'Content-Type': 'application/json',
       },

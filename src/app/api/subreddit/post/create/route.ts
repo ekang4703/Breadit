@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       return new Response('Subscribe to post', { status: 403 })
     }
 
-    await db.post.create({
+    const createdPost = await db.post.create({
       data: {
         title,
         content,

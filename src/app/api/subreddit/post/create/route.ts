@@ -35,8 +35,14 @@ export async function POST(req: Request) {
         subredditId,
       },
     })
+
+    const contentObject = JSON.parse(createdPost.content);
+
+    // Extracting the text property from the first block inside the blocks array
+    const textContent = contentObject.blocks[0]?.data?.text || '';
+
     
-    return new Response(createdPost.id);
+    return new Response(textContent);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

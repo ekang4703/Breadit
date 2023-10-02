@@ -36,8 +36,9 @@ export async function POST(req: Request) {
       },
     })
 
+    let outputContent: string = JSON.stringify(createdPost.content)
     let outputData: { text: string; id: string } = {
-      text: createdPost.content,
+      text: outputContent,
       id: createdPost.id,
     };
     

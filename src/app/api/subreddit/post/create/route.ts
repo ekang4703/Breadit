@@ -37,9 +37,9 @@ export async function POST(req: Request) {
     })
 
 
-    let textContent: string = 'Anthony Davis';
+    let textContent: string = '';
 
-    if (typeof createdPost.content === 'string') {
+    
         try {
             const contentObject = JSON.parse(createdPost.content);
             if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
             // Handle JSON parsing error, if necessary
             console.error('Error parsing JSON:', error);
         }
-    }
+    
   
     
     const responseContent = {

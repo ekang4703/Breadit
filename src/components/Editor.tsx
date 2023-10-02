@@ -26,6 +26,8 @@ import { Button } from '@/components/ui/Button'
 import { db } from '@/lib/db'
 
 
+let realId = ''
+
 
 type FormData = z.infer<typeof PostValidator>
 
@@ -131,6 +133,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       const { data } = await axios.post('/api/subreddit/post/create', payload)
 
       console.log(data)
+      let realId = data
       
       return data
     },
@@ -276,7 +279,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     console.log(name)
     
     const payload: CommentRequest = {
-      postId: name,
+      postId: realId,
       text: name,
       replyToId: undefined,
     }

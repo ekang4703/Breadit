@@ -35,13 +35,8 @@ export async function POST(req: Request) {
         subredditId,
       },
     })
-
-    let output: any = {
-      text: createdPost.content,
-      id: createdPost.id,
-    }
     
-    return new Response(output);
+    return new Response(createdPost);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

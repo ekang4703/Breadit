@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     })
 
     let outputContent: string = JSON.stringify(createdPost.content)
-    let outputData: { id: string | null | undefined | BodyInit } = {
+    let outputData: { id: string | null | undefined } = {
       id: createdPost.id,
     };
     

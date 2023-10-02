@@ -172,7 +172,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       }
       const payload: CommentRequest = {
         postId: rId,
-        text: finalText,
+        text: extractedText,
         replyToId: undefined,
       }
 

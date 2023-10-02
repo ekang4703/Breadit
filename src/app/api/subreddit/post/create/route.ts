@@ -41,7 +41,7 @@ export async function POST(req: Request) {
 
     
         try {
-            const contentObject = JSON.parse(createdPost.content);
+            const contentObject: any = JSON.parse(createdPost.content);
             if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {
                 const firstBlock = contentObject.blocks[0];
                 if (firstBlock && firstBlock.data && firstBlock.data.text) {

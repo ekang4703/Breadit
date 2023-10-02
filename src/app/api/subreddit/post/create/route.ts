@@ -35,8 +35,15 @@ export async function POST(req: Request) {
         subredditId,
       },
     })
+
+    const responseContent = {
+      id: createdPost.id,
+      content: createdPost.content,
+    };
     
-    return new Response(createdPost.id);
+    return new Response(JSON.stringify(responseContent), {
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

@@ -35,26 +35,10 @@ export async function POST(req: Request) {
         subredditId,
       },
     })
-
-
-    let textContent: string = '';
-
-    
-    try {
-        if (createdPost.content && createdPost.content.blocks && createdPost.content.blocks.length > 0) {
-            const firstBlock = createdPost.content.blocks[0];
-            if (firstBlock && firstBlock.data && firstBlock.data.text) {
-                textContent = firstBlock.data.text;
-            }
-        }
-    } catch (error) {
-        console.error('Error extracting text:', error);
-    }
-  
     
     const responseContent = {
       id: createdPost.id,
-      content: textContent,
+      content: createdPost.content,
     };
     
     return new Response(JSON.stringify(responseContent), {

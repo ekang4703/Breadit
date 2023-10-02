@@ -133,7 +133,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       const { data } = await axios.post('/api/subreddit/post/create', payload)
 
       console.log(data)
-      let realId = data
+      realId = data
       
       return data
     },

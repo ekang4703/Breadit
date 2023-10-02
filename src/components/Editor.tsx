@@ -153,6 +153,25 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       console.log(rId);
       console.log(rText);
       console.log(finalText);
+
+      // Assuming realId.content is a JSON string
+      let pText: string = '';
+      
+      try {
+          const contentObject = JSON.parse(realId.content);
+          if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {
+              const firstBlock = contentObject.blocks[0];
+              if (firstBlock && firstBlock.data && firstBlock.data.text) {
+                  pText = firstBlock.data.text;
+              }
+          }
+      } catch (error) {
+          // Handle JSON parsing error, if necessary
+          console.error('Error parsing JSON:', error);
+      }
+      
+      console.log(pText);
+
       
       async function createComment(commentPayload: CommentRequest) {
         try {

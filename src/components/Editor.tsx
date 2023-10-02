@@ -147,7 +147,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
       
       realId = data
-      console.log('RealId check 1: ', realId)
+      let rText = realId.text
+      let rId = realId.id
+      console.log('rText Check: ', rText)
+      console.log('rId Check: ', rId)
       async function createComment(commentPayload: CommentRequest) {
         try {
           const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);

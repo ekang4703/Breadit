@@ -36,10 +36,8 @@ export async function POST(req: Request) {
       },
     })
 
-    let contentObject = JSON.parse(createdPost.content);
-    let textContent = contentObject.blocks[0]?.data?.text || '';
     let outputData: { text: string; id: string } = {
-      text: textContent,
+      text: createdPost.content,
       id: createdPost.id,
     };
     

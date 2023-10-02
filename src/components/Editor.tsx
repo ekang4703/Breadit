@@ -147,7 +147,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       let realId = data
       
       let rId: string = realId.id;
-      let rtext: string = realId.content;
+      let rText: string = realId.content;
       
       console.log(rId);
       console.log(rText);

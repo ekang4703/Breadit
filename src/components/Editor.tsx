@@ -146,11 +146,11 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
             
       let realId = data
       
-      let postId: string = realId.id;
-      let text: string = realId.content;
+      let rId: string = realId.id;
+      let rtext: string = realId.content;
       
       console.log(rId);
-      console.log(rContent);
+      console.log(rText);
       
       async function createComment(commentPayload: CommentRequest) {
         try {

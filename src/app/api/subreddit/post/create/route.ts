@@ -36,10 +36,10 @@ export async function POST(req: Request) {
       },
     })
 
-    const contentObject = JSON.parse(createdPost.content);
+    const contentObject: string | null = JSON.parse(createdPost.content);
 
     // Extracting the text property from the first block inside the blocks array
-    const textContent = contentObject.blocks[0]?.data?.text || '';
+    const textContent = contentObject.blocks[0]?.data?.text;
 
     
     return new Response(textContent);

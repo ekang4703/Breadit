@@ -132,7 +132,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       
       const { data } = await axios.post('/api/subreddit/post/create', payload)
 
-      console.log(data)
+      console.log('Data Check: ', data)
       realId = data
       
       return data
@@ -276,8 +276,8 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     let users = response.data
     let name = users.id
 
-    console.log(name)
-    console.log(realId)
+    console.log('Name Check: ', name)
+    console.log('realId Check: ', realId)
     
     const payload: CommentRequest = {
       postId: realId,

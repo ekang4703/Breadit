@@ -40,19 +40,16 @@ export async function POST(req: Request) {
     let textContent: string = '';
 
     
-        try {
-            const contentObject: any = JSON.parse(createdPost.content);
-            if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {
-                const firstBlock = contentObject.blocks[0];
-                if (firstBlock && firstBlock.data && firstBlock.data.text) {
-                    textContent = firstBlock.data.text;
-                }
+    try {
+        if (createdPost.content && createdPost.content.blocks && createdPost.content.blocks.length > 0) {
+            const firstBlock = createdPost.content.blocks[0];
+            if (firstBlock && firstBlock.data && firstBlock.data.text) {
+                textContent = firstBlock.data.text;
             }
-        } catch (error) {
-            // Handle JSON parsing error, if necessary
-            console.error('Error parsing JSON:', error);
         }
-    
+    } catch (error) {
+        console.error('Error extracting text:', error);
+    }
   
     
     const responseContent = {

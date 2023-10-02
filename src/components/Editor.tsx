@@ -131,9 +131,6 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       const payload: PostCreationRequest = { title, content, subredditId }
       
       const { data } = await axios.post('/api/subreddit/post/create', payload)
-
-      console.log('Data Check: ', data)
-      realId = data
       
       return data
     },
@@ -144,8 +141,12 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         variant: 'destructive',
       })
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
+
+      realId = data
+      console.log('RealId check 1: ', realId)
+      
       const newPathname = pathname.split('/').slice(0, -1).join('/')
       router.push(newPathname)
 

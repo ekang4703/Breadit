@@ -163,7 +163,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
         replyToId: undefined,
       }
 
-      await createComment(payload)
+      createComment(payload)
       
       
       const newPathname = pathname.split('/').slice(0, -1).join('/')

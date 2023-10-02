@@ -145,6 +145,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
             
       let realId = data
+      console.log(realId)
       
       let rId: string = realId.id;
       let rText: string = realId.content;

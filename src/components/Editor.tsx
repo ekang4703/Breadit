@@ -150,6 +150,12 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       let rId: string = realId.id;
       let rText: string = realId.content;
       let finalText = JSON.stringify(rText)
+
+      const startIdx = finalText.indexOf('"text":"') + '"text":"'.length;
+      const endIdx = finalText.indexOf('"}', startIdx);
+      const extractedText = finalText.substring(startIdx, endIdx);
+      
+      console.log(extractedText);
       
       console.log(rId);
       console.log(rText);

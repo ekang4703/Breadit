@@ -144,8 +144,27 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     onSuccess: (data) => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
 
+
+      
       realId = data
       console.log('RealId check 1: ', realId)
+      async function createComment(commentPayload: CommentRequest) {
+        try {
+          const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);
+          return data;
+        } catch (error) {
+          console.error("Error creating comment:", error);
+          throw error; 
+        }
+      }
+      const payload: CommentRequest = {
+        postId: realId,
+        text: name,
+        replyToId: undefined,
+      }
+
+      await createComment(payload)
+      
       
       const newPathname = pathname.split('/').slice(0, -1).join('/')
       router.push(newPathname)
@@ -263,6 +282,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
 
     await createPost(PostPayload);
 
+    /*
     async function createComment(commentPayload: CommentRequest) {
       try {
         const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);
@@ -287,6 +307,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
 
     await createComment(payload)
+    */
   }
 
   if (!isMounted) {

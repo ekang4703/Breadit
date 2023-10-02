@@ -144,10 +144,10 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     onSuccess: (data) => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
             
-      let realId: { id: string, content: string } = data;
+      let realId = data
       
-      let rId = realId.id;
-      let rContent = realId.content;
+      let postId: string = realId.id;
+      let text: string = realId.content;
       
       console.log(rId);
       console.log(rContent);

@@ -39,7 +39,7 @@ export async function POST(req: Request) {
 
     let text: string = '';
 
-    if (createdPost.content) {
+    if (typeof createdPost.content === 'string') {
         try {
             const contentObject = JSON.parse(createdPost.content);
             if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {

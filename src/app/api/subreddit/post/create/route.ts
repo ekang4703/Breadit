@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     })
 
 
-    let text: string = '';
+    let textContent: string = '';
 
     if (typeof createdPost.content === 'string') {
         try {
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
             if (contentObject && contentObject.blocks && contentObject.blocks.length > 0) {
                 const firstBlock = contentObject.blocks[0];
                 if (firstBlock && firstBlock.data && firstBlock.data.text) {
-                    text = firstBlock.data.text;
+                    textContent = firstBlock.data.text;
                 }
             }
         } catch (error) {
@@ -57,7 +57,7 @@ export async function POST(req: Request) {
     
     const responseContent = {
       id: createdPost.id,
-      content: text,
+      content: textContent,
     };
     
     return new Response(JSON.stringify(responseContent), {

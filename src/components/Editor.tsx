@@ -143,14 +143,15 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     },
     onSuccess: (data) => {
       // turn pathname /r/mycommunity/submit into /r/mycommunity
-
-
+            
+      let realId: { id: string, content: string } = JSON.parse(data);
       
-      realId = data
-      let rId = JSON.stringify(realId.id)
-      let rContent = JSON.stringify(realId.content)
-      console.log(rId)
-      console.log(rContent)
+      let rId = realId.id;
+      let rContent = realId.content;
+      
+      console.log(rId);
+      console.log(rContent);
+      
       async function createComment(commentPayload: CommentRequest) {
         try {
           const { data } = await axios.patch(`/api/subreddit/post/comment/`, commentPayload);

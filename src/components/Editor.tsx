@@ -152,7 +152,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       let finalText = JSON.stringify(rText)
 
       let textObject = JSON.parse(realId.content);
-      let textContent = contentObject.blocks[0]?.data?.text || '';
+      let textContent = textObject.blocks[0]?.data?.text || '';
       console.log(textContent)
       
       console.log(rId);

@@ -36,13 +36,12 @@ export async function POST(req: Request) {
       },
     })
 
-    const contentObject: JsonValue | null = JSON.parse(createdPost.content);
-
-    // Extracting the text property from the first block inside the blocks array
-    const textContent = contentObject.blocks[0]?.data?.text;
-
+    let output: any = {
+      text: createdPost.content,
+      id: createdPost.id,
+    }
     
-    return new Response(textContent);
+    return new Response(output);
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

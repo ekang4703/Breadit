@@ -36,7 +36,14 @@ export async function POST(req: Request) {
       },
     })
 
-    return new Response(createdPost.id)
+    let contentObject = JSON.parse(createdPost.content);
+    let textContent = contentObject.blocks[0]?.data?.text || '';
+    let outputData: { text: string; id: string } = {
+      text: textContent,
+      id: createdPost.id,
+    };
+    
+    return new Response(outputData)
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

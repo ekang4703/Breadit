@@ -277,6 +277,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     let name = users.id
 
     console.log(name)
+    consol.log(realId)
     
     const payload: CommentRequest = {
       postId: realId,

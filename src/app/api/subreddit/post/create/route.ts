@@ -37,11 +37,12 @@ export async function POST(req: Request) {
     })
 
     let outputContent: string = JSON.stringify(createdPost.content)
-    let outputData: { id: string | null | undefined } = {
+    let outputData: { text: string | null | undefined; id: string | null | undefined } = {
+      text: outputContent,
       id: createdPost.id,
     };
     
-    return new Response(outputData.id || '', { status: 200 });
+    return new Response(outputData || '', { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })

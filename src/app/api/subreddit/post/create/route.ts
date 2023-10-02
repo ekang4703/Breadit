@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     })
 
 
-    let textContent: string = '';
+    let textContent: string = 'Anthony Davis';
 
     if (typeof createdPost.content === 'string') {
         try {

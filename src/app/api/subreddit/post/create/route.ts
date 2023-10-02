@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       id: createdPost.id,
     };
     
-    return new Response(outputData)
+    return new Response(outputData.id || '', { status: 200 });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return new Response(error.message, { status: 400 })
